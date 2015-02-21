@@ -22,6 +22,26 @@ button {
   font-size: 1.5em;
   margin-right: 15px;
 }
+
+form {
+  display: inline-block;
+}
+
+input{
+  font-size: 1.5em;
+  font-family: 'Special Elite', cursive;
+  width: 80px;
+  height: 40px;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  border: 1px solid;
+  border-radius: 8px;
+  background-color: transparent;
+  background-repeat:no-repeat;
+  padding-left: 15px;
+ 
+}
 .card {
   float: left;
   border: solid 1px black;

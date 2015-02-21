@@ -5,9 +5,7 @@ class window.Hand extends Backbone.Collection
 
   hit: ->
       @add(@deck.pop())
-      if @minScore() > 21
-        @trigger 'bust'
-        console.log 'bust triggered from hit'
+      if !@isDealer and @minScore() > 21 then @trigger 'bust'
     
   hasAce: -> @reduce (memo, card) ->
     memo or card.get('value') is 1
@@ -20,14 +18,14 @@ class window.Hand extends Backbone.Collection
   scores: ->
     [@minScore(), @minScore() + 10 * @hasAce()]
 
-  stand: ->
-    @trigger 'dealer-turn', @
-
-  deal: ->
+  dealerTurn: ->
     if @isDealer
       @first().set 'revealed', true
-      while @minScore() <= 17
-        @hit()
-      @trigger 'end'
+      if @minScore() >= 17
+        @trigger 'end'
+      else
+        while @minScore() <= 17
+          @hit()
+        @trigger 'end'
 
 
