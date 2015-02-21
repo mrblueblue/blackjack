@@ -1,3 +1,13 @@
+body {
+  background-image: url(http://www.wallpapersworld.cz/data/cerven/1194.jpg);
+  background-size: cover;
+}
+
+h2 {
+  font-size: 4em;
+  color: red;
+  font-family: 'Just Another Hand', cursive;
+}
 .card {
   float: left;
   border: solid 1px black;
@@ -5,6 +15,7 @@
   border-radius: 5px;
   height: 140px;
   margin-right: 20px;
+  background-color: white;
 }
 
 .covered {
