@@ -5,9 +5,9 @@ class window.HandView extends Backbone.View
 
   initialize: ->
     # @collection.on 'dealer-turn', => @dealer
-    @collection.on 'bust', => @end()
+    @collection.on 'bust', => @trigger 'ended'
     @collection.on 'add remove change', => @render()
-    @collection.on 'end', => @end()
+
     @render()
 
   render: ->
@@ -17,7 +17,4 @@ class window.HandView extends Backbone.View
       new CardView(model: card).$el
     @$('.score').text @collection.scores()[0]
 
-  end: ->
-    console.dir @$('.Dealer')
-    $('.Dealer').addClass 'winner'
     
