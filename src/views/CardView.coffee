@@ -12,10 +12,11 @@ class window.CardView extends Backbone.View
 
     @$el.children().detach()
     # @$el.html @template @model.attributes
-    @$el.addClass 'covered' unless @model.get 'revealed'
+
     @$el.css {
       'background-image':'url(./img/tarot/'+rank+'-'+suit+'.png)'
       'background-size': 'cover'
     }
 
+    @$el.addClass 'covered' unless @model.get 'revealed'
 

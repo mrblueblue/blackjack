@@ -2,14 +2,14 @@ class window.HandView extends Backbone.View
   className: 'hand'
 
   template: _.template '<h2 class=<% if(isDealer){ %>Dealer<% }else{ %>You<% } %>>
-                        <% if(isDealer){ %>Dealer<% }else{ %>You<% } %> 
-                        (<span class="score"></span>) <span class="money">$12</span></h2>'
+                        <% if(isDealer){ %>Dealer<% }else{ %>You<% } %>
+                        (<span class="score"></span>) <span class="money">$<%=wallet%></span></h2>'
 
   initialize: ->
-    # @collection.on 'dealer-turn', => @dealer
+    # @collection.on 'bet', => @render()
+    @$('.score').text @collection.scores()[0]
     # @collection.on 'end', => @trigger 'end'
     @collection.on 'add remove change', => @render()
-
     @render()
 
   render: ->
@@ -19,4 +19,6 @@ class window.HandView extends Backbone.View
       new CardView(model: card).$el
     @$('.score').text @collection.scores()[0]
 
-    
+
+
+

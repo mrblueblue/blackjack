@@ -40,7 +40,7 @@ input{
   background-color: transparent;
   background-repeat:no-repeat;
   padding-left: 15px;
- 
+
 }
 .card {
   float: left;
@@ -54,7 +54,7 @@ input{
 }
 
 .covered {
-  background-color: black;
+  background-image: url(./img/tarot/back.png);
 }
 
 .hand {

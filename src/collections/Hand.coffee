@@ -1,12 +1,13 @@
 class window.Hand extends Backbone.Collection
   model: Card
 
-  initialize: (array, @deck, @isDealer, @isWinner=false) ->
+  initialize: (array, @deck, @isDealer, @wallet, @bet) ->
+
 
   hit: ->
       @add(@deck.pop())
       if !@isDealer and @minScore() > 21 then @trigger 'bust'
-    
+
   hasAce: -> @reduce (memo, card) ->
     memo or card.get('value') is 1
   , 0
@@ -20,7 +21,7 @@ class window.Hand extends Backbone.Collection
 
   dealerTurn: ->
     if @isDealer
-      @first().set 'revealed', true
+      @first().flip()
       if @minScore() >= 17
         @trigger 'end'
       else
