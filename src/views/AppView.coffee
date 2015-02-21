@@ -15,6 +15,7 @@ class window.AppView extends Backbone.View
     # Listen for Dealer Turn
 
     @model.get('playerHand').on 'dealer-turn', =>
+      console.log('deal')
       @model.get('dealerHand').deal()
 
     # Listen for End Game
@@ -23,32 +24,33 @@ class window.AppView extends Backbone.View
     player = @model.get('playerHand')
     dealer = @model.get('dealerHand')
 
+    dealerWins= ->
+      winner = 'Dealer'
+      $('.Dealer').addClass 'winner'
+      $('.You').addClass 'loser'
+      return
+
+    playerWins=  ->
+      winner = 'You'
+      $('.Dealer').addClass 'loser'
+      $('.You').addClass 'winer'
+      return
+
     player.on 'bust', =>
-      winner = dealer
-      callback =  -> alert('dealer wins')
-      setTimeout callback, 500
+      dealerWins()
 
     dealer.on 'bust', =>
-      winner = player
-      setTimeout alert ('player wins'), 5000
+      playerWins()
 
     player.on 'end', =>
-      if dealer.minScore() > player.minScore() then winner = dealer
-      if dealer.minScore() < player.minScore() then winner = player
-      if dealer.minScore() == player.minScore() then winner = player
-      if winner == dealer
-        setTimeout alert ('the winner is the dealer'), 5000
-      else
-        setTimeout alert ('the winner is the player'), 5000
+      if dealer.minScore() > player.minScore() then dealerWins()
+      if dealer.minScore() < player.minScore() then playerWins()
+      if dealer.minScore() == player.minScore() then playerWins()
 
     dealer.on 'end', =>
-      if dealer.minScore() > player.minScore() then winner = dealer
-      if dealer.minScore() < player.minScore() then winner = player
-      if dealer.minScore() == player.minScore() then winner = player
-      if winner == dealer
-        setTimeout alert('the winner is the dealer'), 5000
-      else
-        setTimeout alert('the winner is the player'), 5000
+      if dealer.minScore() > player.minScore() then dealerWins()
+      if dealer.minScore() < player.minScore() then playerWins()
+      if dealer.minScore() == player.minScore() then playerWins()
 
   render: ->
     @$el.children().detach()

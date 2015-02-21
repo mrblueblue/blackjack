@@ -1,21 +1,36 @@
 body {
-  background-image: url(http://www.wallpapersworld.cz/data/cerven/1194.jpg);
+  /*background-image: url(http://www.rogerwermers.com/images/aged-background2.jpg);*/
+  background-image: url(../img/paper-background.jpg);
   background-size: cover;
+  margin-left: 75px
 }
 
 h2 {
-  font-size: 4em;
-  color: maroon;
-  font-family: 'Just Another Hand', cursive;
+  font-size: 3em;
+  color: black;
+  font-family: 'Special Elite', cursive;
+}
+
+button {
+  background-color: stone;
+  background-repeat:no-repeat;
+  border-radius: 8px;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  font-family: 'Special Elite', cursive;
+  font-size: 1.5em;
+  margin-right: 15px;
 }
 .card {
   float: left;
   border: solid 1px black;
-  width: 100px;
-  border-radius: 5px;
-  height: 140px;
+  width: 150px;
+  border-radius: 10px;
+  height: 210px;
   margin-right: 20px;
   background-color: white;
+  opacity: .9;
 }
 
 .covered {
@@ -25,3 +40,12 @@ h2 {
 .hand {
   overflow: auto;
 }
+
+.winner {
+  color: green;
+}
+
+.loser {
+  color: red;
+}
+
