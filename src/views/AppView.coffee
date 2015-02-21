@@ -25,29 +25,30 @@ class window.AppView extends Backbone.View
 
     player.on 'bust', =>
       winner = dealer
-      alert 'dealer wins', winner.isDealer
+      callback =  -> alert('dealer wins')
+      setTimeout callback, 500
 
     dealer.on 'bust', =>
       winner = player
-      alert 'player wins', winner.isDealer
+      setTimeout alert ('player wins'), 5000
 
     player.on 'end', =>
       if dealer.minScore() > player.minScore() then winner = dealer
       if dealer.minScore() < player.minScore() then winner = player
       if dealer.minScore() == player.minScore() then winner = player
       if winner == dealer
-        alert 'the winner is the dealer'
+        setTimeout alert ('the winner is the dealer'), 5000
       else
-        alert 'the winner is the player'
+        setTimeout alert ('the winner is the player'), 5000
 
     dealer.on 'end', =>
       if dealer.minScore() > player.minScore() then winner = dealer
       if dealer.minScore() < player.minScore() then winner = player
       if dealer.minScore() == player.minScore() then winner = player
       if winner == dealer
-        alert 'the winner is the dealer'
+        setTimeout alert('the winner is the dealer'), 5000
       else
-        alert 'the winner is the player'
+        setTimeout alert('the winner is the player'), 5000
 
   render: ->
     @$el.children().detach()

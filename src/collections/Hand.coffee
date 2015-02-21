@@ -27,7 +27,7 @@ class window.Hand extends Backbone.Collection
     if @isDealer
       @first().set 'revealed', true
       while @minScore() <= 17
-        @hit()
+        setTimeout @hit(), 1000
       @trigger 'end'
 
 
